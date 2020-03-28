@@ -12,7 +12,7 @@ const User = require('../../models/User');
 // @desc    Test route
 // @access  Public
 
-// By passing 2nd argument auth makes this route protected
+// By passing 2nd argument auth makes this route protected!
 router.get('/', auth, async (req, res) => {
   try {
     // we don't want to return the password, so we put it out of the data that we receive
@@ -55,7 +55,7 @@ router.post(
           .json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
 
-      // Make sure that password matches
+      // Make sure that password matches - 1st user entered passwword and 2nd encrypted password in database
       const isMatch = await bcrypt.compare(password, user.password);
 
       if(!isMatch) {

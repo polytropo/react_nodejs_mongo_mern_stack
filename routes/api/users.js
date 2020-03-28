@@ -30,16 +30,19 @@ router.post(
     }
 
     const { name, email, password } = req.body;
-
+    // See if user exists
     try {
+      // Returns a promise (therefore a function needs to be async - line 26)
       let user = await User.findOne({ email });
 
       if (user) {
+        // 400 for a bad request
         return res
           .status(400)
           .json({ errors: [{ msg: 'User already exists' }] });
       }
 
+      // Get user gravatar
       const avatar = gravatar.url(email, {
         s: '200',
         r: 'pg',
@@ -53,22 +56,24 @@ router.post(
         password
       });
 
+      // Encrypt password
       const salt = await bcrypt.genSalt(10);
 
       user.password = await bcrypt.hash(password, salt);
-
+      // Save user to DB
       await user.save();
 
       const payload = {
         user: {
-          id: user.id
+          id: user.id,
         }
       };
 
+      // Return jsonwebtoken
       jwt.sign(
         payload,
         config.get('jwtSecret'),
-        { expiresIn: 360000 },
+        { expiresIn: 3600000 },
         (err, token) => {
           if (err) throw err;
           // You can also add in here more data of the user, not just the token, but in our case we only need token
@@ -77,6 +82,7 @@ router.post(
       );
     } catch (err) {
       console.error(err.message);
+      // 500 for a server error
       res.status(500).send('Server error');
     }
   }

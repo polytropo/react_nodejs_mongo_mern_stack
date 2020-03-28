@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
+// IF you want to implement facebook login and twitter login, then using PASSPORT instead of this makes sense
+
 module.exports = function(req, res, next) {
   // Get token from the header
   const token = req.header('x-auth-token');

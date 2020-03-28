@@ -1,0 +1,2 @@
+1. do first the init to install the packages you need?. Watch in first few episodes where he does it.
+models/User and create schemas at how the the "table" looks in the database. TODO: check to implement login with Google and FB? - to jsut get email from that????
