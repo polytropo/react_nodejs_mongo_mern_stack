@@ -13,12 +13,34 @@ const Register = () => {
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
       console.log('Passwords do not match');
     } else {
-      console.log('Submit ok:', formData);
+      console.log('Submit ok SUCCESS:', formData);
+      // const newUser = {
+      //   name,
+      //   email,
+      //   password,
+      // }
+      
+      // We are ghitting api/users route (sending name, email and password) a nd it returns the token to us. We can do '/api/users' because we added the proxy in package.json otherwise we would need to do https://localhost:5000/api/users
+      // try {
+      //   const config = {
+      //     headers: {
+      //       'Content-Type': 'application/json'
+      //     }
+      //   };
+        
+      //   console.log('newUser', newUser, JSON.stringify(newUser));
+      //   const data = JSON.stringify(newUser);
+      //   const res = await axios.post('/api/users', data, config);
+      //   console.log(res.data);
+      //   const res = await axios.post('http://localhost:5000/api/users', newUser);
+      // } catch (err) {
+      //   console.error(err.response.data);
+      // }
 
     }
   }
