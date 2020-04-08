@@ -5,9 +5,16 @@ import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
-  const guestLinks = (
+  const authLinks = (
     <ul>
-      <li>
+        <li>
+
+            <Link to="/dashboard">
+                <i className="fas fa-user"></i>{' '}
+                <span className='hide-sm'>Dashboard</span>
+            </Link>
+        </li>
+        <li>
         <a onClick={logout} href='#!'>
           <i className="fas fa-sign-out-alt"></i>{' '}
           <span className='hide-sm'>Logout</span>
@@ -16,7 +23,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     </ul>
   );
 
-  const authLinks = (
+  const guestLinks = (
     <ul>
       <li><a href="#!">Developers</a></li>
       <li><Link to="/register">Register</Link></li>
@@ -29,7 +36,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <h1>
         <Link to="/"><i className="fas fa-code"></i> DevConnector</Link>
       </h1>
-      { !loading && (<Fragment>{ isAuthenticated ? guestLinks : authLinks }</Fragment>)}
+      { !loading && (<Fragment>{ isAuthenticated ? authLinks : guestLinks }</Fragment>)}
     </nav>
   )
 }
