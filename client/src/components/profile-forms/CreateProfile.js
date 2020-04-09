@@ -137,7 +137,7 @@ const CreateProfile = ({ createProfile, history }) => {
                         <div className="form-group social-input">
                             <i className="fab fa-youtube fa-2x"></i>
                             <input type="text" placeholder="YouTube URL" name="youtube" value={youtube} onChange={e => onChange(e)} />
-                        </div>
+                        </div>q
 
                         <div className="form-group social-input">
                             <i className="fab fa-linkedin fa-2x"></i>
