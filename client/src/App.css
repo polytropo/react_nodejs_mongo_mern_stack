@@ -575,3 +575,11 @@ button {
     padding: 0.3rem 0.4rem;
   }
 }
+
+.player {
+  display: flex;
+  flex-direction: row;
+}
+.player span.player_note {
+ min-width: 600px;
+}

@@ -23,3 +23,8 @@ export const DELETE_POST = 'DELETE_POST';
 export const ADD_POST = 'ADD_POST';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+// Players types
+export const GET_PLAYERS = 'GET_PLAYERS';
+export const PLAYER_ERROR = 'PLAYER_ERROR';
+export const DELETE_PLAYER = 'DELETE_PLAYER';
+export const ADD_PLAYER = 'ADD_PLAYER';
